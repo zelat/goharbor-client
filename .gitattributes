@@ -1,0 +1,5 @@
+# go-swagger generated files
+apiv*/internal/** linguist-generated=true
+apiv*/model/** linguist-generated=true
+# mockery generated files
+apiv*/mocks/** linguist-generated=true
