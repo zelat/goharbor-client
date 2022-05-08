@@ -60,6 +60,41 @@ func (c *RESTClient) GetRepository(ctx context.Context, projectName, repositoryN
 	return nil, &ErrRepositoryNotFound{}
 }
 
+func (c *RESTClient) UpdateRepository(ctx context.Context, projectName, repositoryName string, update *model.Repository) error {
+	params := &repository.UpdateRepositoryParams{
+		ProjectName:    projectName,
+		Repository:     update,
+		RepositoryName: repositoryName,
+		Context:        ctx,
+	}
+
+	params.WithTimeout(c.Options.Timeout)
+	_, err := c.V2Client.Repository.UpdateRepository(params, c.AuthInfo)
+
+	if err != nil {
+		return handleSwaggerRepositoryErrors(err)
+	}
+
+	return nil
+}
+
+func (c *RESTClient) DeleteRepository(ctx context.Context, projectName, repositoryName string) error {
+	params := &repository.DeleteRepositoryParams{
+		ProjectName:    projectName,
+		RepositoryName: repositoryName,
+		Context:        ctx,
+	}
+
+	params.WithTimeout(c.Options.Timeout)
+	_, err := c.V2Client.Repository.DeleteRepository(params, c.AuthInfo)
+
+	if err != nil {
+		return handleSwaggerRepositoryErrors(err)
+	}
+
+	return nil
+}
+
 func (c *RESTClient) ListRepositories(ctx context.Context, projectName string) ([]*model.Repository, error) {
 	params := &repository.ListRepositoriesParams{
 		Page:        &c.Options.Page,

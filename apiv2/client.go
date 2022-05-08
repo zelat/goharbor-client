@@ -424,18 +424,14 @@ func (c *RESTClient) GetRepository(ctx context.Context, projectName, repositoryN
 	return c.repository.GetRepository(ctx, projectName, repositoryName)
 }
 
-//func (c *RESTClient) UpdateRepository(ctx context.Context, projectName, repositoryName string, update *modelv2.Repository) error {
-//	return c.repository.UpdateRepository(ctx, projectName, repositoryName, update)
-//}
-//
-//func (c *RESTClient) ListAllRepositories(ctx context.Context) ([]*modelv2.Repository, error) {
-//	return c.repository.ListAllRepositories(ctx)
-//}
+func (c *RESTClient) UpdateRepository(ctx context.Context, projectName, repositoryName string, update *modelv2.Repository) error {
+	return c.repository.UpdateRepository(ctx, projectName, repositoryName, update)
+}
 
 func (c *RESTClient) ListRepositories(ctx context.Context, projectName string) ([]*modelv2.Repository, error) {
 	return c.repository.ListRepositories(ctx, projectName)
 }
 
-//func (c *RESTClient) DeleteRepository(ctx context.Context, projectName, repositoryName string) error {
-//	return c.repository.DeleteRepository(ctx, projectName, repositoryName)
-//}
+func (c *RESTClient) DeleteRepository(ctx context.Context, projectName, repositoryName string) error {
+	return c.repository.DeleteRepository(ctx, projectName, repositoryName)
+}

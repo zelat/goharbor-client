@@ -28,6 +28,7 @@ func main() {
 		fmt.Print("连接harbor错误")
 	}
 	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
+	//show Repositories
 	repos, err := harborClient.ListRepositories(ctx, "secvector")
 	var i int
 	for i = 0; i < len(repos); i++ {
@@ -36,4 +37,7 @@ func main() {
 		fmt.Print(repos[i].CreationTime, "\n")
 		fmt.Print(repos[i].PullCount, "\n")
 	}
+	//show all Repositories
+	images, err := harborClient.GetRepository(ctx, "secvector", "secvector/api")
+	fmt.Print(images.Name)
 }
