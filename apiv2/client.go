@@ -2,6 +2,8 @@ package apiv2
 
 import (
 	"context"
+	"github.com/zelat/goharbor-client/v4/apiv2/config"
+	"github.com/zelat/goharbor-client/v4/apiv2/repository"
 	"net/url"
 	"strings"
 
@@ -35,6 +37,7 @@ type Client interface {
 	replication.Client
 	system.Client
 	retention.Client
+	repository.Client
 	quota.Client
 	gc.Client
 }
@@ -50,10 +53,15 @@ type RESTClient struct {
 	quota       *quota.RESTClient
 	gc          *gc.RESTClient
 	robot       *robot.RESTClient
+	repository  *repository.RESTClient
 }
 
 // NewRESTClient constructs a new REST client containing each sub client.
-func NewRESTClient(legacyClient *client.Harbor, v2Client *v2client.Harbor, authInfo runtime.ClientAuthInfoWriter) *RESTClient {
+func NewRESTClient(legacyClient *client.Harbor, v2Client *v2client.Harbor, opts *config.Options, authInfo runtime.ClientAuthInfoWriter) *RESTClient {
+	if opts == nil {
+		opts = config.Defaults()
+	}
+
 	return &RESTClient{
 		user:        user.NewClient(legacyClient, v2Client, authInfo),
 		project:     project.NewClient(legacyClient, v2Client, authInfo),
@@ -64,12 +72,13 @@ func NewRESTClient(legacyClient *client.Harbor, v2Client *v2client.Harbor, authI
 		quota:       quota.NewClient(legacyClient, v2Client, authInfo),
 		gc:          gc.NewClient(legacyClient, v2Client, authInfo),
 		robot:       robot.NewClient(v2Client, authInfo),
+		repository:  repository.NewClient(legacyClient, v2Client, opts, authInfo),
 	}
 }
 
 // NewRESTClientForHost constructs a new REST client containing a swagger API client using the defined
 // host string and basePath, the additional Harbor v2 API suffix as well as basic auth info.
-func NewRESTClientForHost(u, username, password string) (*RESTClient, error) {
+func NewRESTClientForHost(u, username, password string, opts *config.Options) (*RESTClient, error) {
 	if !strings.HasSuffix(u, v2URLSuffix) {
 		u += v2URLSuffix
 	}
@@ -83,7 +92,7 @@ func NewRESTClientForHost(u, username, password string) (*RESTClient, error) {
 	v2SwaggerClient := v2client.New(runtimeclient.New(harborURL.Host, harborURL.Path, []string{harborURL.Scheme}), strfmt.Default)
 	authInfo := runtimeclient.BasicAuth(username, password)
 
-	return NewRESTClient(legacySwaggerClient, v2SwaggerClient, authInfo), nil
+	return NewRESTClient(legacySwaggerClient, v2SwaggerClient, opts, authInfo), nil
 }
 
 // User Client
@@ -408,3 +417,25 @@ func (c *RESTClient) DeleteRobotAccountByID(ctx context.Context, id int64) error
 func (c *RESTClient) UpdateRobotAccount(ctx context.Context, r *modelv2.Robot) error {
 	return c.robot.UpdateRobotAccount(ctx, r)
 }
+
+// Repository Client
+
+func (c *RESTClient) GetRepository(ctx context.Context, projectName, repositoryName string) (*modelv2.Repository, error) {
+	return c.repository.GetRepository(ctx, projectName, repositoryName)
+}
+
+//func (c *RESTClient) UpdateRepository(ctx context.Context, projectName, repositoryName string, update *modelv2.Repository) error {
+//	return c.repository.UpdateRepository(ctx, projectName, repositoryName, update)
+//}
+//
+//func (c *RESTClient) ListAllRepositories(ctx context.Context) ([]*modelv2.Repository, error) {
+//	return c.repository.ListAllRepositories(ctx)
+//}
+
+func (c *RESTClient) ListRepositories(ctx context.Context, projectName string) ([]*modelv2.Repository, error) {
+	return c.repository.ListRepositories(ctx, projectName)
+}
+
+//func (c *RESTClient) DeleteRepository(ctx context.Context, projectName, repositoryName string) error {
+//	return c.repository.DeleteRepository(ctx, projectName, repositoryName)
+//}
