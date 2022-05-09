@@ -1,3 +1,4 @@
+//go:build !integration
 // +build !integration
 
 package system
@@ -8,12 +9,12 @@ import (
 	"testing"
 
 	runtimeclient "github.com/go-openapi/runtime/client"
-	legacyclient "github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client"
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client/products"
-	"github.com/zelat/goharbor-client/v4/apiv2/mocks"
-	legacymodel "github.com/zelat/goharbor-client/v4/apiv2/model/legacy"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
+	legacyclient "github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client"
+	"github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client/products"
+	"github.com/zelat/goharbor-client/apiv2/mocks"
+	legacymodel "github.com/zelat/goharbor-client/apiv2/model/legacy"
 )
 
 var authInfo = runtimeclient.BasicAuth("foo", "bar")

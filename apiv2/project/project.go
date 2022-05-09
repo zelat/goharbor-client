@@ -5,19 +5,19 @@ import (
 	"errors"
 	"strconv"
 
-	projectapi "github.com/zelat/goharbor-client/v4/apiv2/internal/api/client/project"
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/api/client/robotv1"
+	projectapi "github.com/zelat/goharbor-client/apiv2/internal/api/client/project"
+	"github.com/zelat/goharbor-client/apiv2/internal/api/client/robotv1"
 
-	modelv2 "github.com/zelat/goharbor-client/v4/apiv2/model"
-	uc "github.com/zelat/goharbor-client/v4/apiv2/user"
+	modelv2 "github.com/zelat/goharbor-client/apiv2/model"
+	uc "github.com/zelat/goharbor-client/apiv2/user"
 
-	v2client "github.com/zelat/goharbor-client/v4/apiv2/internal/api/client"
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client"
+	v2client "github.com/zelat/goharbor-client/apiv2/internal/api/client"
+	"github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client"
 
 	"github.com/go-openapi/runtime"
 
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client/products"
-	legacymodel "github.com/zelat/goharbor-client/v4/apiv2/model/legacy"
+	"github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client/products"
+	legacymodel "github.com/zelat/goharbor-client/apiv2/model/legacy"
 )
 
 const (

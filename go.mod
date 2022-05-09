@@ -1,4 +1,4 @@
-module github.com/zelat/goharbor-client/v4
+module github.com/zelat/goharbor-client
 
 go 1.16
 

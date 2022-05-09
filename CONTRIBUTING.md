@@ -36,10 +36,10 @@ The latter is used to authenticate requests to the `goharbor` API:
 import (
     "context"
     "errors"
-    "github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client"
-    "github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client/products"
-    v2client "github.com/zelat/goharbor-client/v4/apiv2/internal/api/client"
-    model "github.com/zelat/goharbor-client/v4/apiv2/model/legacy"
+    "github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client"
+    "github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client/products"
+    v2client "github.com/zelat/goharbor-client/apiv2/internal/api/client"
+    model "github.com/zelat/goharbor-client/apiv2/model/legacy"
     "github.com/go-openapi/runtime"
 )
 

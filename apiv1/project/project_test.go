@@ -13,10 +13,10 @@ import (
 	runtimeclient "github.com/go-openapi/runtime/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"github.com/zelat/goharbor-client/v4/apiv1/internal/api/client"
-	"github.com/zelat/goharbor-client/v4/apiv1/internal/api/client/products"
-	"github.com/zelat/goharbor-client/v4/apiv1/mocks"
-	model "github.com/zelat/goharbor-client/v4/apiv1/model"
+	"github.com/zelat/goharbor-client//apiv1/internal/api/client"
+	"github.com/zelat/goharbor-client//apiv1/internal/api/client/products"
+	"github.com/zelat/goharbor-client//apiv1/mocks"
+	model "github.com/zelat/goharbor-client//apiv1/model"
 )
 
 var (

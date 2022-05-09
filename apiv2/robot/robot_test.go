@@ -1,3 +1,4 @@
+//go:build !integration
 // +build !integration
 
 package robot
@@ -10,10 +11,10 @@ import (
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/api/client"
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/api/client/robot"
-	"github.com/zelat/goharbor-client/v4/apiv2/mocks"
-	modelv2 "github.com/zelat/goharbor-client/v4/apiv2/model"
+	"github.com/zelat/goharbor-client/apiv2/internal/api/client"
+	"github.com/zelat/goharbor-client/apiv2/internal/api/client/robot"
+	"github.com/zelat/goharbor-client/apiv2/mocks"
+	modelv2 "github.com/zelat/goharbor-client/apiv2/model"
 )
 
 var (

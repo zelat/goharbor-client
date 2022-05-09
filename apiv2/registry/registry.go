@@ -4,11 +4,11 @@ import (
 	"context"
 
 	"github.com/go-openapi/runtime"
-	v2client "github.com/zelat/goharbor-client/v4/apiv2/internal/api/client"
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client"
+	v2client "github.com/zelat/goharbor-client/apiv2/internal/api/client"
+	"github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client"
 
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client/products"
-	model "github.com/zelat/goharbor-client/v4/apiv2/model/legacy"
+	"github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client/products"
+	model "github.com/zelat/goharbor-client/apiv2/model/legacy"
 )
 
 // RESTClient is a subclient for handling registry related actions.

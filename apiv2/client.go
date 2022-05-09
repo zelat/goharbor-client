@@ -2,30 +2,31 @@ package apiv2
 
 import (
 	"context"
-	"github.com/zelat/goharbor-client/v4/apiv2/config"
-	"github.com/zelat/goharbor-client/v4/apiv2/repository"
+	"github.com/zelat/goharbor-client/apiv2/artifact"
+	"github.com/zelat/goharbor-client/apiv2/config"
+	"github.com/zelat/goharbor-client/apiv2/repository"
 	"net/url"
 	"strings"
 
-	"github.com/zelat/goharbor-client/v4/apiv2/gc"
-	modelv2 "github.com/zelat/goharbor-client/v4/apiv2/model"
-	"github.com/zelat/goharbor-client/v4/apiv2/quota"
-	"github.com/zelat/goharbor-client/v4/apiv2/retention"
-	"github.com/zelat/goharbor-client/v4/apiv2/robot"
+	"github.com/zelat/goharbor-client/apiv2/gc"
+	modelv2 "github.com/zelat/goharbor-client/apiv2/model"
+	"github.com/zelat/goharbor-client/apiv2/quota"
+	"github.com/zelat/goharbor-client/apiv2/retention"
+	"github.com/zelat/goharbor-client/apiv2/robot"
 
 	"github.com/go-openapi/runtime"
 	runtimeclient "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	v2client "github.com/zelat/goharbor-client/v4/apiv2/internal/api/client"
+	v2client "github.com/zelat/goharbor-client/apiv2/internal/api/client"
 
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client"
-	legacymodel "github.com/zelat/goharbor-client/v4/apiv2/model/legacy"
-	"github.com/zelat/goharbor-client/v4/apiv2/project"
-	"github.com/zelat/goharbor-client/v4/apiv2/registry"
-	"github.com/zelat/goharbor-client/v4/apiv2/replication"
-	"github.com/zelat/goharbor-client/v4/apiv2/system"
-	"github.com/zelat/goharbor-client/v4/apiv2/user"
+	"github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client"
+	legacymodel "github.com/zelat/goharbor-client/apiv2/model/legacy"
+	"github.com/zelat/goharbor-client/apiv2/project"
+	"github.com/zelat/goharbor-client/apiv2/registry"
+	"github.com/zelat/goharbor-client/apiv2/replication"
+	"github.com/zelat/goharbor-client/apiv2/system"
+	"github.com/zelat/goharbor-client/apiv2/user"
 )
 
 const v2URLSuffix string = "/v2.0"
@@ -40,6 +41,7 @@ type Client interface {
 	repository.Client
 	quota.Client
 	gc.Client
+	artifact.Client
 }
 
 // RESTClient implements the Client interface as a REST client
@@ -54,6 +56,7 @@ type RESTClient struct {
 	gc          *gc.RESTClient
 	robot       *robot.RESTClient
 	repository  *repository.RESTClient
+	artifact    *artifact.RESTClient
 }
 
 // NewRESTClient constructs a new REST client containing each sub client.
@@ -434,4 +437,37 @@ func (c *RESTClient) ListRepositories(ctx context.Context, projectName string) (
 
 func (c *RESTClient) DeleteRepository(ctx context.Context, projectName, repositoryName string) error {
 	return c.repository.DeleteRepository(ctx, projectName, repositoryName)
+}
+
+// Artifact Client
+func (c *RESTClient) AddArtifactLabel(ctx context.Context, projectName, repositoryName, reference string, label *modelv2.Label) error {
+	return c.artifact.AddArtifactLabel(ctx, projectName, repositoryName, reference, label)
+}
+
+func (c *RESTClient) CopyArtifact(ctx context.Context, from *artifact.CopyReference, projectName, repositoryName string) error {
+	return c.artifact.CopyArtifact(ctx, from, projectName, repositoryName)
+}
+
+func (c *RESTClient) CreateTag(ctx context.Context, projectName, repositoryName, reference string, tag *modelv2.Tag) error {
+	return c.artifact.CreateTag(ctx, projectName, repositoryName, reference, tag)
+}
+
+func (c *RESTClient) DeleteTag(ctx context.Context, projectName, repositoryName, reference, tagName string) error {
+	return c.artifact.DeleteTag(ctx, projectName, repositoryName, reference, tagName)
+}
+
+func (c *RESTClient) GetArtifact(ctx context.Context, projectName, repositoryName, reference string) (*modelv2.Artifact, error) {
+	return c.artifact.GetArtifact(ctx, projectName, repositoryName, reference)
+}
+
+func (c *RESTClient) ListArtifacts(ctx context.Context, projectName, repositoryName string) ([]*modelv2.Artifact, error) {
+	return c.artifact.ListArtifacts(ctx, projectName, repositoryName)
+}
+
+func (c *RESTClient) ListTags(ctx context.Context, projectName, repositoryName, reference string) ([]*modelv2.Tag, error) {
+	return c.artifact.ListTags(ctx, projectName, repositoryName, reference)
+}
+
+func (c *RESTClient) RemoveLabel(ctx context.Context, projectName, repositoryName, reference string, id int64) error {
+	return c.artifact.RemoveLabel(ctx, projectName, repositoryName, reference, id)
 }

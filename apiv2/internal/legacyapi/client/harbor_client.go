@@ -10,8 +10,8 @@ import (
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client/products"
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client/scanners"
+	"github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client/products"
+	"github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client/scanners"
 )
 
 // Default harbor HTTP client.

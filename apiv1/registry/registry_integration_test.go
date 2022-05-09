@@ -1,3 +1,4 @@
+//go:build integration
 // +build integration
 
 package registry
@@ -7,15 +8,15 @@ import (
 	"net/url"
 	"testing"
 
-	integrationtest "github.com/zelat/goharbor-client/v4/apiv1/testing"
+	integrationtest "github.com/zelat/goharbor-client//apiv1/testing"
 
 	runtimeclient "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/zelat/goharbor-client/v4/apiv1/internal/api/client"
-	model "github.com/zelat/goharbor-client/v4/apiv1/model"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"github.com/zelat/goharbor-client//apiv1/internal/api/client"
+	model "github.com/zelat/goharbor-client//apiv1/model"
 )
 
 var (

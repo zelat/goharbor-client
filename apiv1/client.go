@@ -8,15 +8,15 @@ import (
 	"github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/runtime"
-	"github.com/zelat/goharbor-client/v4/apiv1/internal/api/client"
+	"github.com/zelat/goharbor-client//apiv1/internal/api/client"
 
-	"github.com/zelat/goharbor-client/v4/apiv1/project"
-	"github.com/zelat/goharbor-client/v4/apiv1/registry"
-	"github.com/zelat/goharbor-client/v4/apiv1/replication"
-	"github.com/zelat/goharbor-client/v4/apiv1/system"
-	"github.com/zelat/goharbor-client/v4/apiv1/user"
+	"github.com/zelat/goharbor-client//apiv1/project"
+	"github.com/zelat/goharbor-client//apiv1/registry"
+	"github.com/zelat/goharbor-client//apiv1/replication"
+	"github.com/zelat/goharbor-client//apiv1/system"
+	"github.com/zelat/goharbor-client//apiv1/user"
 
-	"github.com/zelat/goharbor-client/v4/apiv1/model"
+	"github.com/zelat/goharbor-client//apiv1/model"
 )
 
 // Client is an interface that groups all sub-package methods.

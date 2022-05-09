@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/zelat/goharbor-client/v4/apiv2/model/legacy"
+	"github.com/zelat/goharbor-client/apiv2/model/legacy"
 )
 
 // NewPutProjectsProjectIDWebhookPoliciesPolicyIDParams creates a new PutProjectsProjectIDWebhookPoliciesPolicyIDParams object,

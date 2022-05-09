@@ -10,15 +10,15 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	v2client "github.com/zelat/goharbor-client/v4/apiv2/internal/api/client"
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/api/client/gc"
-	modelv2 "github.com/zelat/goharbor-client/v4/apiv2/model"
+	v2client "github.com/zelat/goharbor-client/apiv2/internal/api/client"
+	"github.com/zelat/goharbor-client/apiv2/internal/api/client/gc"
+	modelv2 "github.com/zelat/goharbor-client/apiv2/model"
 
 	runtimeclient "github.com/go-openapi/runtime/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client"
-	"github.com/zelat/goharbor-client/v4/apiv2/mocks"
+	"github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client"
+	"github.com/zelat/goharbor-client/apiv2/mocks"
 )
 
 var (

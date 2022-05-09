@@ -1,3 +1,4 @@
+//go:build integration
 // +build integration
 
 package user
@@ -8,8 +9,8 @@ import (
 	"testing"
 
 	"github.com/go-openapi/strfmt"
-	"github.com/zelat/goharbor-client/v4/apiv1/internal/api/client"
-	integrationtest "github.com/zelat/goharbor-client/v4/apiv1/testing"
+	"github.com/zelat/goharbor-client//apiv1/internal/api/client"
+	integrationtest "github.com/zelat/goharbor-client//apiv1/testing"
 
 	runtimeclient "github.com/go-openapi/runtime/client"
 	"github.com/stretchr/testify/assert"

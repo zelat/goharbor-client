@@ -1,7 +1,7 @@
 # goharbor-client
 [![GitHub license](https://img.shields.io/github/license/zelat/goharbor-client.svg?style=flat-square)](https://github.com/zelat/goharbor-client/blob/master/LICENSE)
 [![Go Report Card](https://goreportcard.com/badge/github.com/zelat/goharbor-client?style=flat-square)](https://goreportcard.com/badge/github.com/zelat/goharbor-client)
-[![Go Doc](https://img.shields.io/badge/godoc-reference-blue.svg?style=flat-square)](https://pkg.go.dev/github.com/zelat/goharbor-client/v4)
+[![Go Doc](https://img.shields.io/badge/godoc-reference-blue.svg?style=flat-square)](https://pkg.go.dev/github.com/zelat/goharbor-client/)
 [![Release](https://img.shields.io/github/release/zelat/goharbor-client.svg?style=flat-square)](https://github.com/zelat/goharbor-client/releases/latest)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/a765bafaa29f6f8fdde7/maintainability)](https://codeclimate.com/github/zelat/goharbor-client/maintainability)
@@ -20,14 +20,14 @@ Install the desired client library version using `go get`:
 
 ```shell script
 # v1 Client
-go get github.com/zelat/goharbor-client/v4/apiv1
+go get github.com/zelat/goharbor-client//apiv1
 ```
 
 or
 
 ```shell script
 # v2 Client
-go get github.com/zelat/goharbor-client/v4/apiv2
+go get github.com/zelat/goharbor-client/apiv2
 ```
 
 ## Contributing
@@ -36,4 +36,4 @@ Before you make your changes, check to see if an [issue already exists](https://
 When in doubt where to start when making changes to the client, please refer to the [Contribution guide](./CONTRIBUTING.md).
 
 ## Documentation
-For more specific documentation, please refer to the [godoc](https://pkg.go.dev/github.com/zelat/goharbor-client/v4) of this library.
+For more specific documentation, please refer to the [godoc](https://pkg.go.dev/github.com/zelat/goharbor-client/) of this library.

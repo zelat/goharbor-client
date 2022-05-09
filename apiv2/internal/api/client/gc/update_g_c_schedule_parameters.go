@@ -15,7 +15,7 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/zelat/goharbor-client/v4/apiv2/model"
+	"github.com/zelat/goharbor-client/apiv2/model"
 )
 
 // NewUpdateGCScheduleParams creates a new UpdateGCScheduleParams object,

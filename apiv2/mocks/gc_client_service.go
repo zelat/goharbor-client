@@ -3,8 +3,8 @@
 package mocks
 
 import (
-	gc "github.com/zelat/goharbor-client/v4/apiv2/internal/api/client/gc"
 	mock "github.com/stretchr/testify/mock"
+	gc "github.com/zelat/goharbor-client/apiv2/internal/api/client/gc"
 
 	runtime "github.com/go-openapi/runtime"
 )

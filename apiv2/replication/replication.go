@@ -4,13 +4,13 @@ import (
 	"context"
 
 	"github.com/go-openapi/runtime"
-	v2client "github.com/zelat/goharbor-client/v4/apiv2/internal/api/client"
-	replicationapi "github.com/zelat/goharbor-client/v4/apiv2/internal/api/client/replication"
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client"
-	modelv2 "github.com/zelat/goharbor-client/v4/apiv2/model"
+	v2client "github.com/zelat/goharbor-client/apiv2/internal/api/client"
+	replicationapi "github.com/zelat/goharbor-client/apiv2/internal/api/client/replication"
+	"github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client"
+	modelv2 "github.com/zelat/goharbor-client/apiv2/model"
 
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client/products"
-	legacymodel "github.com/zelat/goharbor-client/v4/apiv2/model/legacy"
+	"github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client/products"
+	legacymodel "github.com/zelat/goharbor-client/apiv2/model/legacy"
 )
 
 // RESTClient is a subclient for handling replication related actions.

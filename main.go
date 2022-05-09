@@ -4,8 +4,8 @@ import (
 	"context"
 	"crypto/tls"
 	"fmt"
-	"github.com/zelat/goharbor-client/v4/apiv2"
-	"github.com/zelat/goharbor-client/v4/apiv2/config"
+	"github.com/zelat/goharbor-client/apiv2"
+	"github.com/zelat/goharbor-client/apiv2/config"
 	"net/http"
 )
 
@@ -43,6 +43,8 @@ func main() {
 	fmt.Print("ImageName ", images.Name)
 	fmt.Print("ImageDescription ", images.Description)
 	//更新repository信息
-	images.Description = "test"
-	harborClient.UpdateRepository(ctx, "secvector", "api", images)
+	//images.Description = "test"
+	//harborClient.UpdateRepository(ctx, "secvector", "api", images)
+	//ListArtifact
+
 }

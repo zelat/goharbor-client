@@ -8,16 +8,16 @@ import (
 	"net/url"
 	"testing"
 
-	v2client "github.com/zelat/goharbor-client/v4/apiv2/internal/api/client"
-	integrationtest "github.com/zelat/goharbor-client/v4/apiv2/testing"
+	v2client "github.com/zelat/goharbor-client/apiv2/internal/api/client"
+	integrationtest "github.com/zelat/goharbor-client/apiv2/testing"
 
 	runtimeclient "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client"
-	model "github.com/zelat/goharbor-client/v4/apiv2/model/legacy"
+	"github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client"
+	model "github.com/zelat/goharbor-client/apiv2/model/legacy"
 )
 
 var (

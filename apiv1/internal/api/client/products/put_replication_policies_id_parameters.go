@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/zelat/goharbor-client/v4/apiv1/model"
+	"github.com/zelat/goharbor-client//apiv1/model"
 )
 
 // NewPutReplicationPoliciesIDParams creates a new PutReplicationPoliciesIDParams object,

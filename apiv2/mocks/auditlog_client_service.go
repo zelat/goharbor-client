@@ -3,8 +3,8 @@
 package mocks
 
 import (
-	auditlog "github.com/zelat/goharbor-client/v4/apiv2/internal/api/client/auditlog"
 	mock "github.com/stretchr/testify/mock"
+	auditlog "github.com/zelat/goharbor-client/apiv2/internal/api/client/auditlog"
 
 	runtime "github.com/go-openapi/runtime"
 )

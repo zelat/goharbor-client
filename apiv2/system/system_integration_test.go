@@ -11,9 +11,9 @@ import (
 	runtimeclient "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 	"github.com/stretchr/testify/require"
-	v2client "github.com/zelat/goharbor-client/v4/apiv2/internal/api/client"
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client"
-	integrationtest "github.com/zelat/goharbor-client/v4/apiv2/testing"
+	v2client "github.com/zelat/goharbor-client/apiv2/internal/api/client"
+	"github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client"
+	integrationtest "github.com/zelat/goharbor-client/apiv2/testing"
 )
 
 var (

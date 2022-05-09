@@ -6,13 +6,13 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/api/client/retention"
-	modelv2 "github.com/zelat/goharbor-client/v4/apiv2/model"
+	"github.com/zelat/goharbor-client/apiv2/internal/api/client/retention"
+	modelv2 "github.com/zelat/goharbor-client/apiv2/model"
 
 	"github.com/go-openapi/runtime"
-	v2client "github.com/zelat/goharbor-client/v4/apiv2/internal/api/client"
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client"
-	projectapi "github.com/zelat/goharbor-client/v4/apiv2/project"
+	v2client "github.com/zelat/goharbor-client/apiv2/internal/api/client"
+	"github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client"
+	projectapi "github.com/zelat/goharbor-client/apiv2/project"
 )
 
 const (

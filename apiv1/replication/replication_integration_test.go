@@ -9,15 +9,15 @@ import (
 	"testing"
 
 	"github.com/go-openapi/strfmt"
-	"github.com/zelat/goharbor-client/v4/apiv1/internal/api/client"
-	integrationtest "github.com/zelat/goharbor-client/v4/apiv1/testing"
+	"github.com/zelat/goharbor-client//apiv1/internal/api/client"
+	integrationtest "github.com/zelat/goharbor-client//apiv1/testing"
 
 	runtimeclient "github.com/go-openapi/runtime/client"
-	"github.com/zelat/goharbor-client/v4/apiv1/registry"
+	"github.com/zelat/goharbor-client//apiv1/registry"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	model "github.com/zelat/goharbor-client/v4/apiv1/model"
+	model "github.com/zelat/goharbor-client//apiv1/model"
 )
 
 var (

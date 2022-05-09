@@ -11,20 +11,20 @@ import (
 	"testing"
 
 	"github.com/go-openapi/strfmt"
-	projectapi "github.com/zelat/goharbor-client/v4/apiv2/internal/api/client/project"
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/api/client/robotv1"
-	modelv2 "github.com/zelat/goharbor-client/v4/apiv2/model"
+	projectapi "github.com/zelat/goharbor-client/apiv2/internal/api/client/project"
+	"github.com/zelat/goharbor-client/apiv2/internal/api/client/robotv1"
+	modelv2 "github.com/zelat/goharbor-client/apiv2/model"
 
 	"github.com/go-openapi/runtime"
-	v2client "github.com/zelat/goharbor-client/v4/apiv2/internal/api/client"
+	v2client "github.com/zelat/goharbor-client/apiv2/internal/api/client"
 
 	runtimeclient "github.com/go-openapi/runtime/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client"
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client/products"
-	"github.com/zelat/goharbor-client/v4/apiv2/mocks"
-	legacymodel "github.com/zelat/goharbor-client/v4/apiv2/model/legacy"
+	"github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client"
+	"github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client/products"
+	"github.com/zelat/goharbor-client/apiv2/mocks"
+	legacymodel "github.com/zelat/goharbor-client/apiv2/model/legacy"
 )
 
 var (

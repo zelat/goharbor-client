@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/zelat/goharbor-client/v4/apiv2/model"
+	"github.com/zelat/goharbor-client/apiv2/model"
 )
 
 // DeleteRobotV1Reader is a Reader for the DeleteRobotV1 structure.

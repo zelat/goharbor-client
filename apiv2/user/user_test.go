@@ -1,3 +1,4 @@
+//go:build !integration
 // +build !integration
 
 package user
@@ -9,15 +10,15 @@ import (
 	"testing"
 
 	"github.com/go-openapi/runtime"
-	v2client "github.com/zelat/goharbor-client/v4/apiv2/internal/api/client"
+	v2client "github.com/zelat/goharbor-client/apiv2/internal/api/client"
 
 	runtimeclient "github.com/go-openapi/runtime/client"
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client"
-	"github.com/zelat/goharbor-client/v4/apiv2/internal/legacyapi/client/products"
-	"github.com/zelat/goharbor-client/v4/apiv2/mocks"
-	model "github.com/zelat/goharbor-client/v4/apiv2/model/legacy"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
+	"github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client"
+	"github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client/products"
+	"github.com/zelat/goharbor-client/apiv2/mocks"
+	model "github.com/zelat/goharbor-client/apiv2/model/legacy"
 )
 
 var (
