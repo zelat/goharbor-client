@@ -20,7 +20,7 @@ Install the desired client library version using `go get`:
 
 ```shell script
 # v1 Client
-go get github.com/zelat/goharbor-client//apiv1
+go get github.com/zelat/goharbor-client/apiv1
 ```
 
 or

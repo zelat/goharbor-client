@@ -8,10 +8,10 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/zelat/goharbor-client//apiv1/internal/api/client"
-	"github.com/zelat/goharbor-client//apiv1/internal/api/client/products"
-	"github.com/zelat/goharbor-client//apiv1/mocks"
-	"github.com/zelat/goharbor-client//apiv1/model"
+	"github.com/zelat/goharbor-client/apiv1/internal/api/client"
+	"github.com/zelat/goharbor-client/apiv1/internal/api/client/products"
+	"github.com/zelat/goharbor-client/apiv1/mocks"
+	"github.com/zelat/goharbor-client/apiv1/model"
 
 	"github.com/go-openapi/runtime"
 	runtimeclient "github.com/go-openapi/runtime/client"

@@ -4,12 +4,12 @@ import (
 	"context"
 	"errors"
 
-	"github.com/zelat/goharbor-client//apiv1/internal/api/client"
+	"github.com/zelat/goharbor-client/apiv1/internal/api/client"
 
 	"github.com/go-openapi/runtime"
 
-	"github.com/zelat/goharbor-client//apiv1/internal/api/client/products"
-	model "github.com/zelat/goharbor-client//apiv1/model"
+	"github.com/zelat/goharbor-client/apiv1/internal/api/client/products"
+	model "github.com/zelat/goharbor-client/apiv1/model"
 )
 
 // RESTClient is a subclient for handling user related actions.

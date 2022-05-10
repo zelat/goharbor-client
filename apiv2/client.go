@@ -25,6 +25,7 @@ import (
 	"github.com/zelat/goharbor-client/apiv2/project"
 	"github.com/zelat/goharbor-client/apiv2/registry"
 	"github.com/zelat/goharbor-client/apiv2/replication"
+	"github.com/zelat/goharbor-client/apiv2/scan"
 	"github.com/zelat/goharbor-client/apiv2/system"
 	"github.com/zelat/goharbor-client/apiv2/user"
 )
@@ -42,6 +43,7 @@ type Client interface {
 	quota.Client
 	gc.Client
 	artifact.Client
+	scan.Client
 }
 
 // RESTClient implements the Client interface as a REST client
@@ -57,6 +59,7 @@ type RESTClient struct {
 	robot       *robot.RESTClient
 	repository  *repository.RESTClient
 	artifact    *artifact.RESTClient
+	scan        *scan.RESTClient
 }
 
 // NewRESTClient constructs a new REST client containing each sub client.
@@ -76,6 +79,8 @@ func NewRESTClient(legacyClient *client.Harbor, v2Client *v2client.Harbor, opts 
 		gc:          gc.NewClient(legacyClient, v2Client, authInfo),
 		robot:       robot.NewClient(v2Client, authInfo),
 		repository:  repository.NewClient(legacyClient, v2Client, opts, authInfo),
+		artifact:    artifact.NewClient(legacyClient, v2Client, opts, authInfo),
+		scan:        scan.NewClient(legacyClient, v2Client, opts, authInfo),
 	}
 }
 
@@ -470,4 +475,20 @@ func (c *RESTClient) ListTags(ctx context.Context, projectName, repositoryName, 
 
 func (c *RESTClient) RemoveLabel(ctx context.Context, projectName, repositoryName, reference string, id int64) error {
 	return c.artifact.RemoveLabel(ctx, projectName, repositoryName, reference, id)
+}
+
+func (c *RESTClient) GetAddition(ctx context.Context, projectName, repositoryName, reference string, addition artifact.Addition) (interface{}, error) {
+	return c.artifact.GetAddition(ctx, projectName, repositoryName, reference, addition)
+}
+
+func (c *RESTClient) GetVulnerabilitiesAddition(ctx context.Context, projectName, repositoryName, reference string) (interface{}, error) {
+	return c.artifact.GetVulnerabilitiesAddition(ctx, projectName, repositoryName, reference)
+}
+
+func (c *RESTClient) ScanArtifact(ctx context.Context, projectName, repositoryName, reference string) (interface{}, error) {
+	return c.scan.ScanArtifact(ctx, projectName, repositoryName, reference)
+}
+
+func (c *RESTClient) GetReportLog(ctx context.Context, projectName, repositoryName, reference, reportID string) (interface{}, error) {
+	return c.scan.GetReportLog(ctx, projectName, repositoryName, reference, reportID)
 }

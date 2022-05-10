@@ -40,7 +40,7 @@ setup-harbor-v2:
 test:
 	go test -v ./...
 
-INTREGRATION_V1 = CGO_ENABLED=0 go test -p 1 -count 1 -v github.com/zelat/goharbor-client//apiv1/... -tags integration
+INTREGRATION_V1 = CGO_ENABLED=0 go test -p 1 -count 1 -v github.com/zelat/goharbor-client/apiv1/... -tags integration
 INTEGRATION_V2 = CGO_ENABLED=0 go test -p 1 -count 1 -v github.com/zelat/goharbor-client/apiv2/... -tags integration
 
 # Integration testing (CI Jobs)

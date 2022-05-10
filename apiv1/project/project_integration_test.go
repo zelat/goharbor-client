@@ -10,11 +10,11 @@ import (
 	"testing"
 
 	"github.com/go-openapi/strfmt"
-	"github.com/zelat/goharbor-client//apiv1/internal/api/client"
-	integrationtest "github.com/zelat/goharbor-client//apiv1/testing"
+	"github.com/zelat/goharbor-client/apiv1/internal/api/client"
+	integrationtest "github.com/zelat/goharbor-client/apiv1/testing"
 
 	runtimeclient "github.com/go-openapi/runtime/client"
-	uc "github.com/zelat/goharbor-client//apiv1/user"
+	uc "github.com/zelat/goharbor-client/apiv1/user"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

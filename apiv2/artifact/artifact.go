@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/go-openapi/runtime"
 	"github.com/zelat/goharbor-client/apiv2/config"
+	"github.com/zelat/goharbor-client/apiv2/errors"
 	v2client "github.com/zelat/goharbor-client/apiv2/internal/api/client"
 	"github.com/zelat/goharbor-client/apiv2/internal/api/client/artifact"
 	"github.com/zelat/goharbor-client/apiv2/internal/legacyapi/client"
@@ -45,7 +46,7 @@ type Client interface {
 	RemoveLabel(ctx context.Context, projectName, repositoryName, reference string, id int64) error
 	// TODO: Introduce this, once https://github.com/goharbor/harbor/issues/13468 is resolved.
 	GetAddition(ctx context.Context, projectName, repositoryName, reference string, addition Addition) (string, error)
-	// GetVulnerabilitiesAddition(ctx context.Context, projectName, repositoryName, reference string) (string, error)
+	GetVulnerabilitiesAddition(ctx context.Context, projectName, repositoryName, reference string) (string, error)
 }
 
 // ToString returns a string representation of a CopyReference.
@@ -86,21 +87,27 @@ const (
 )
 
 func (c *RESTClient) ListArtifacts(ctx context.Context, projectName, repositoryName string) ([]*model.Artifact, error) {
-	params := artifact.NewListArtifactsParams()
-	params.WithContext(ctx)
-	params.WithTimeout(c.Options.Timeout)
-	params.Page = &c.Options.Page
-	params.PageSize = &c.Options.PageSize
-	params.Q = &c.Options.Query
-	params.WithProjectName(projectName)
-	params.WithRepositoryName(repositoryName)
+	params := &artifact.ListArtifactsParams{
+		Page:           &c.Options.Page,
+		PageSize:       &c.Options.PageSize,
+		ProjectName:    projectName,
+		RepositoryName: repositoryName,
+		Q:              &c.Options.Query,
+		Context:        ctx,
+	}
 
-	resp, err := c.V2Client.Artifact.ListArtifacts(params, c.AuthInfo)
+	params.WithTimeout(c.Options.Timeout)
+	artifact, err := c.V2Client.Artifact.ListArtifacts(params, c.AuthInfo)
 	if err != nil {
+		fmt.Print(err.Error())
 		return nil, handleSwaggerArtifactErrors(err)
 	}
 
-	return resp.Payload, nil
+	if artifact.Payload != nil {
+		return artifact.Payload, nil
+	}
+
+	return nil, &errors.ErrNotFound{}
 }
 
 func (c *RESTClient) AddArtifactLabel(ctx context.Context, projectName, repositoryName, reference string, label *model.Label) error {
@@ -171,21 +178,27 @@ func (c *RESTClient) DeleteTag(ctx context.Context, projectName, repositoryName,
 }
 
 func (c *RESTClient) GetArtifact(ctx context.Context, projectName, repositoryName, reference string) (*model.Artifact, error) {
-	params := artifact.NewGetArtifactParams()
+	params := &artifact.GetArtifactParams{
+		Page:           &c.Options.Page,
+		PageSize:       &c.Options.PageSize,
+		ProjectName:    projectName,
+		RepositoryName: repositoryName,
+		Reference:      reference,
+		Context:        ctx,
+	}
+
 	params.WithTimeout(c.Options.Timeout)
-	params.WithPage(&c.Options.Page)
-	params.WithPageSize(&c.Options.PageSize)
-	params.WithProjectName(projectName)
-	params.WithRepositoryName(repositoryName)
-	params.WithReference(reference)
-	params.WithContext(ctx)
 
 	resp, err := c.V2Client.Artifact.GetArtifact(params, c.AuthInfo)
 	if err != nil {
 		return nil, handleSwaggerArtifactErrors(err)
 	}
 
-	return resp.Payload, nil
+	if resp.Payload != nil {
+		return resp.Payload, nil
+	}
+
+	return nil, &errors.ErrNotFound{}
 }
 
 func (c *RESTClient) ListTags(ctx context.Context, projectName, repositoryName, reference string) ([]*model.Tag, error) {
@@ -240,6 +253,27 @@ func (c *RESTClient) GetAddition(ctx context.Context, projectName, repositoryNam
 	resp, err := c.V2Client.Artifact.GetAddition(params, c.AuthInfo)
 	if err != nil {
 		return nil, err
+	}
+
+	return resp.Payload, nil
+}
+
+func (c *RESTClient) GetVulnerabilitiesAddition(ctx context.Context, projectName, repositoryName, reference string) (interface{}, error) {
+	params := &artifact.GetVulnerabilitiesAdditionParams{
+		ProjectName:    projectName,
+		RepositoryName: repositoryName,
+		Reference:      reference,
+		Context:        ctx,
+	}
+	params.WithTimeout(c.Options.Timeout)
+	xAcceptVulnerabilities := "application/vnd.security.vulnerability.report; version=1.1, application/vnd.scanner.adapter.vuln.report.harbor+json; version=1.0"
+	params.WithXAcceptVulnerabilities(&xAcceptVulnerabilities)
+
+	resp, err := c.V2Client.Artifact.GetVulnerabilitiesAddition(params, c.AuthInfo)
+	fmt.Print("resp", resp, "\n")
+
+	if err != nil {
+		return nil, handleSwaggerArtifactErrors(err)
 	}
 
 	return resp.Payload, nil

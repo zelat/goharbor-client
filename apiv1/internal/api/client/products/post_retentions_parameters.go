@@ -15,7 +15,7 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/zelat/goharbor-client//apiv1/model"
+	"github.com/zelat/goharbor-client/apiv1/model"
 )
 
 // NewPostRetentionsParams creates a new PostRetentionsParams object,

@@ -4,13 +4,13 @@ import (
 	"context"
 	"errors"
 
-	uc "github.com/zelat/goharbor-client//apiv1/user"
+	uc "github.com/zelat/goharbor-client/apiv1/user"
 
-	"github.com/zelat/goharbor-client//apiv1/internal/api/client"
+	"github.com/zelat/goharbor-client/apiv1/internal/api/client"
 
 	"github.com/go-openapi/runtime"
-	"github.com/zelat/goharbor-client//apiv1/internal/api/client/products"
-	"github.com/zelat/goharbor-client//apiv1/model"
+	"github.com/zelat/goharbor-client/apiv1/internal/api/client/products"
+	"github.com/zelat/goharbor-client/apiv1/model"
 )
 
 const (
