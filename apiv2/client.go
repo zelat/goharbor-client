@@ -2,6 +2,7 @@ package apiv2
 
 import (
 	"context"
+	modelv1 "github.com/zelat/goharbor-client/apiv1/model"
 	"github.com/zelat/goharbor-client/apiv2/artifact"
 	"github.com/zelat/goharbor-client/apiv2/config"
 	"github.com/zelat/goharbor-client/apiv2/repository"
@@ -481,7 +482,7 @@ func (c *RESTClient) GetAddition(ctx context.Context, projectName, repositoryNam
 	return c.artifact.GetAddition(ctx, projectName, repositoryName, reference, addition)
 }
 
-func (c *RESTClient) GetVulnerabilitiesAddition(ctx context.Context, projectName, repositoryName, reference string) (interface{}, error) {
+func (c *RESTClient) GetVulnerabilitiesAddition(ctx context.Context, projectName, repositoryName, reference string) (*modelv1.TopReport, error) {
 	return c.artifact.GetVulnerabilitiesAddition(ctx, projectName, repositoryName, reference)
 }
 

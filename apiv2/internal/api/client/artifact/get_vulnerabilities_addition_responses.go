@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
+	modelv1 "github.com/zelat/goharbor-client/apiv1/model"
 	"github.com/zelat/goharbor-client/apiv2/model"
 )
 
@@ -79,13 +80,13 @@ type GetVulnerabilitiesAdditionOK struct {
 	 */
 	ContentType string
 
-	Payload string
+	Payload *modelv1.TopReport
 }
 
 func (o *GetVulnerabilitiesAdditionOK) Error() string {
 	return fmt.Sprintf("[GET /projects/{project_name}/repositories/{repository_name}/artifacts/{reference}/additions/vulnerabilities][%d] getVulnerabilitiesAdditionOK  %+v", 200, o.Payload)
 }
-func (o *GetVulnerabilitiesAdditionOK) GetPayload() string {
+func (o *GetVulnerabilitiesAdditionOK) GetPayload() *modelv1.TopReport {
 	return o.Payload
 }
 
@@ -102,7 +103,6 @@ func (o *GetVulnerabilitiesAdditionOK) readResponse(response runtime.ClientRespo
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
-
 	return nil
 }
 

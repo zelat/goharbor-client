@@ -14,6 +14,10 @@ import (
 	"github.com/go-openapi/swag"
 )
 
+type TopReport struct {
+	ReportType *Report `json:"application/vnd.scanner.adapter.vuln.report.harbor+json; version=1.0,omitempty"`
+}
+
 // Report The harbor native report format
 //
 // swagger:model Report

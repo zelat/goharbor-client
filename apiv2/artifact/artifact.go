@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/go-openapi/runtime"
+	modelv1 "github.com/zelat/goharbor-client/apiv1/model"
 	"github.com/zelat/goharbor-client/apiv2/config"
 	"github.com/zelat/goharbor-client/apiv2/errors"
 	v2client "github.com/zelat/goharbor-client/apiv2/internal/api/client"
@@ -46,7 +47,7 @@ type Client interface {
 	RemoveLabel(ctx context.Context, projectName, repositoryName, reference string, id int64) error
 	// TODO: Introduce this, once https://github.com/goharbor/harbor/issues/13468 is resolved.
 	GetAddition(ctx context.Context, projectName, repositoryName, reference string, addition Addition) (string, error)
-	GetVulnerabilitiesAddition(ctx context.Context, projectName, repositoryName, reference string) (string, error)
+	GetVulnerabilitiesAddition(ctx context.Context, projectName, repositoryName, reference string) (*modelv1.TopReport, error)
 }
 
 // ToString returns a string representation of a CopyReference.
@@ -252,13 +253,13 @@ func (c *RESTClient) GetAddition(ctx context.Context, projectName, repositoryNam
 
 	resp, err := c.V2Client.Artifact.GetAddition(params, c.AuthInfo)
 	if err != nil {
-		return nil, err
+		return nil, handleSwaggerArtifactErrors(err)
 	}
 
 	return resp.Payload, nil
 }
 
-func (c *RESTClient) GetVulnerabilitiesAddition(ctx context.Context, projectName, repositoryName, reference string) (interface{}, error) {
+func (c *RESTClient) GetVulnerabilitiesAddition(ctx context.Context, projectName, repositoryName, reference string) (*modelv1.TopReport, error) {
 	params := &artifact.GetVulnerabilitiesAdditionParams{
 		ProjectName:    projectName,
 		RepositoryName: repositoryName,
@@ -270,7 +271,6 @@ func (c *RESTClient) GetVulnerabilitiesAddition(ctx context.Context, projectName
 	params.WithXAcceptVulnerabilities(&xAcceptVulnerabilities)
 
 	resp, err := c.V2Client.Artifact.GetVulnerabilitiesAddition(params, c.AuthInfo)
-	fmt.Print("resp", resp, "\n")
 
 	if err != nil {
 		return nil, handleSwaggerArtifactErrors(err)

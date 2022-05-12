@@ -55,13 +55,14 @@ func main() {
 		fmt.Print("ArtifactsDigest = ", artifacts[j].Digest, "\n")
 		fmt.Print("ArtifactsReference = ", artifacts[j].References, "\n")
 		//Get Artifact
-		//	artifact, err := harborClient.GetArtifact(ctx, "secvector", "api", artifacts[j].Digest)
-		//	if err != nil {
-		//		fmt.Print(err.Error())
-		//	}
-		//	fmt.Print("Labels is ", artifact.Labels, "\n")
-		//	fmt.Print("AdditionLinks is ", artifact.AdditionLinks, "\n")
-		//
+		artifact, err := harborClient.GetArtifact(ctx, "secvector", "httpd", artifacts[j].Digest)
+		if err != nil {
+			fmt.Print(err.Error())
+		}
+		fmt.Print("ID is ", artifact.ID, "\n")
+		fmt.Print("RepositoryID is ", artifact.RepositoryID, "\n")
+		fmt.Print("AdditionLinks is ", artifact.AdditionLinks, "\n")
+
 		//Get Addition
 		//	addition, err := harborClient.GetAddition(ctx, "secvector", "api", artifacts[j].Digest, "vulnerabilities")
 		//	fmt.Print("addition", addition, "\n")
@@ -81,10 +82,10 @@ func main() {
 	//fmt.Print("ReportLog is ", reportlog, "\n")
 
 	//Get Addition
-	//addition, err := harborClient.GetAddition(ctx, "secvector", "api", artifacts[0].Digest, "vulnerabilities")
+	//addition, err := harborClient.GetAddition(ctx, "secvector", "httpd", artifacts[0].Digest, "vulnerabilities")
 	//fmt.Print("addition is ", addition, "\n")
 
 	//Get Vuln
 	vuln, err := harborClient.GetVulnerabilitiesAddition(ctx, "secvector", "httpd", artifacts[0].Digest)
-	fmt.Print("Vulnerabilities is ", vuln, "\n")
+	fmt.Print("vuln is ", vuln.ReportType.GeneratedAt)
 }

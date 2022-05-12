@@ -283,10 +283,10 @@ func (a *Client) GetAddition(params *GetAdditionParams, authInfo runtime.ClientA
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
@@ -327,7 +327,6 @@ func (a *Client) GetArtifact(params *GetArtifactParams, authInfo runtime.ClientA
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err

@@ -98,6 +98,8 @@ func (o *GetAdditionOK) readResponse(response runtime.ClientResponse, consumer r
 		o.ContentType = hdrContentType
 	}
 
+	fmt.Print("hdrContentType", hdrContentType, "\n")
+
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
